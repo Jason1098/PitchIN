@@ -17,7 +17,12 @@ describe UsersController do
   describe '#create' do
     context 'given valid params' do
       before :each do
-        post(:create, { :user => { :email => 'pizza@p.com' } })
+        @valid_params = {
+          :email => 'b@b.com',
+          :password => 'burrito',
+          :password_confirmation => 'burrito',
+        }
+        post(:create, { :user => @valid_params })
       end
 
       it 'creates the user' do
@@ -33,7 +38,7 @@ describe UsersController do
       end
 
       it 'sets the user email' do
-        assigns(:user).email.should == 'pizza@p.com'
+        assigns(:user).email.should == 'b@b.com'
       end
     end
 
